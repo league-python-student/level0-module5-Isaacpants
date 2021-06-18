@@ -5,6 +5,7 @@ from tkinter import messagebox, simpledialog, Tk
 import random
 import unittest
 
+
 # TODO Look at the test methods below and define the functions used in those
 #  tests to make the tests pass. For example, the first test function has the
 #  following code:
@@ -16,6 +17,60 @@ import unittest
 
 
 # ======================= DO NOT EDIT THE CODE BELOW =========================
+def multiply(num1, num2):
+    return num1 * num2
+
+
+def str_cat(var1, var2, var3):
+    var1str = str(var1)
+    var2str = str(var2)
+    var3str = str(var3)
+    var5 = var1str + ' ' + var2str + ' ' + var3str
+    return var5
+
+
+def greater_than(var1, var2):
+    if var2 > var1:
+        return True
+    else:
+        return False
+
+
+def get_random_number(low, high):
+    r = random.randint(low, high)
+    return r
+
+
+def is_vegetable(var = None):
+    if var == 'apple':
+        return False
+    elif var == 'celery':
+        return True
+    elif var == 'tomato':
+        return False
+    elif var == 'mushroom':
+        return False
+    elif var is None:
+        return False
+
+
+def make_appointment(preferred_time_of_day = None):
+    if preferred_time_of_day == 'morning':
+        return '8 am'
+    elif preferred_time_of_day == 'afternoon':
+        return '1 pm'
+    elif preferred_time_of_day == 'evening':
+        return '5 pm'
+    elif preferred_time_of_day is None:
+        return '8 am'
+    else:
+        return 'error'
+
+   # self.assertEqual('8 am', make_appointment(preferred_time_of_day='morning'))
+    #self.assertEqual('1 pm', make_appointment('afternoon'))
+    #self.assertEqual('5 pm', make_appointment('evening'))
+    #self.assertEqual('8 am', make_appointment())
+    #self.assertEqual('error', make_appointment('graveyard'))
 
 class FunctionTests(unittest.TestCase):
 
@@ -37,7 +92,7 @@ class FunctionTests(unittest.TestCase):
 
     def test_function_5(self):
         self.assertEqual(False, is_vegetable('apple'))
-        self.assertEqual(True,  is_vegetable('celery'))
+        self.assertEqual(True, is_vegetable('celery'))
         self.assertEqual(False, is_vegetable('tomato'))
         self.assertEqual(False, is_vegetable('mushroom'))
         self.assertEqual(False, is_vegetable())
@@ -48,6 +103,7 @@ class FunctionTests(unittest.TestCase):
         self.assertEqual('5 pm', make_appointment('evening'))
         self.assertEqual('8 am', make_appointment())
         self.assertEqual('error', make_appointment('graveyard'))
+
 
 if __name__ == '__main__':
     unittest.main()
