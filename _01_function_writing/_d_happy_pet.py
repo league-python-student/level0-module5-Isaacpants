@@ -2,27 +2,27 @@
 Write methods to represent the activities that will make the user's pet happy.
 """
 from tkinter import messagebox, simpledialog, Tk
+
 global happiness
 happiness = 5
 
 
-def happiness_checker():
-    global happiness
-    if happiness <= 0:
-        messagebox.showinfo('Your pet is sad, make it happy!')
 def feed():
     global happiness
     happiness += 10
-    messagebox.showinfo('Your pet has ' + happiness+' happiness')
+    messagebox.showinfo(None, 'Your pet has ' + str(happiness) + ' happiness')
+
 
 def walk(animal):
     global happiness
     if animal == 'fish':
         happiness -= 5
     elif animal == 'cat':
-        happiness -=1
+        happiness -= 1
     else:
-        happiness +=5
+        happiness += 5
+    messagebox.showinfo(None, 'Your pet has ' + str(happiness) + ' happiness')
+
 
 def play(animal):
     global happiness
@@ -31,15 +31,37 @@ def play(animal):
     elif animal == 'dog':
         happiness += 10
     else:
-        happiness +=5
+        happiness += 5
+    messagebox.showinfo(None, 'Your pet has ' + str(happiness) + ' happiness')
+
+
 def ignore(animal):
     global happiness
     if animal == 'dog':
+        happiness -= 500
+    elif animal == "cat":
+        happiness += 5
+    else:
+        happiness += 1
+    messagebox.showinfo(None, 'Your pet has ' + str(happiness) + ' happiness')
 
 
 if __name__ == '__main__':
-    animal = simpledialog.askstring(None, "What type of pet do you want?(Cat, dog, or fish")
+    window = Tk()
+    window.withdraw()
+    animal = simpledialog.askstring(None, "What type of pet do you want?(dog = easy, fish = medium, or cat = hard")
 
+    while happiness > 0:
+
+        activity = simpledialog.askstring(None, "What would you like to do with your pet(feed, walk, play, nothing)")
+        if activity == "feed":
+            feed()
+        elif activity == "walk":
+            walk(animal)
+        elif activity == "play":
+            play(animal)
+        else:
+            ignore(animal)
     # TODO)
     #   1. Ask the user to enter the type of pet they want (give them a few
     #      choices).
