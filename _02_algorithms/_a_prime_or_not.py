@@ -4,13 +4,20 @@ A prime number is a number that is only divisible by 1 and itself.
 """
 from tkinter import messagebox, simpledialog, Tk
 
+z = 0
+
 
 def prime_or_nah(num):
-    if int(num) == 2 or int(num) == 0:
-        messagebox.showinfo(None, "Prime")
-    elif int(num) % 2 == 0:
-        messagebox.showinfo(None, "Not prime")
-    else:
+    global z
+    for i in range(int(num)-1):
+        if i > 1:
+            if int(num) % i == 0:
+                z += 1
+            else:
+                z += 0
+    if z >= 1:
+        messagebox.showinfo(None, "Not Prime")
+    elif z == 0:
         messagebox.showinfo(None, "Prime")
 
 
