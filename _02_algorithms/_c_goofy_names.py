@@ -5,16 +5,19 @@ import random
 from tkinter import messagebox, simpledialog, Tk
 
 
-def goofy(name):
+def goofy(goofy_name):
     name_list = list(name)
     for i in range(len(name)):
-        if i % 1 == 0:
+        if i % 2 == 0:
             name_list[i] = name_list[i].upper()
         else:
             name_list[i] = name_list[i].lower()
-
+    goofy_name = name_list
+    messagebox.showinfo(None, goofy_name)
 
 if __name__ == '__main__':
+    window = Tk()
+    window.withdraw()
     name = simpledialog.askstring(None, "What is your name")
     goofy(name)
 
